@@ -1,6 +1,8 @@
 package com.nathanielpautzke.bullseyeguy.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nathanielpautzke.bullseyeguy.controller.Web;
+import com.nathanielpautzke.bullseyeguy.domain.Price;
 import com.nathanielpautzke.bullseyeguy.domain.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -35,6 +38,20 @@ public class TestWeb {
 
         mockMvc.perform(get("/api/v1/products/1234")
                 .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void putEndpointTest() throws Exception {
+        Price price = Price.builder().value("$10.00").build();
+        ResponseEntity response = ResponseEntity.ok().build();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        given(web.updateProduct("1234", price)).willReturn(response);
+
+        mockMvc.perform(put("/api/v1/products/1234").contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(price)))
                 .andExpect(status().isOk());
     }
 }

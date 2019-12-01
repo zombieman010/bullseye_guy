@@ -8,6 +8,3 @@ spring:
       username: mongoadmin
       password: secret
       database: bullseye
-
-logging:
-  level: INFO
