@@ -2,9 +2,9 @@
 spring:
   data:
     mongodb:
-      host: localhost
+      host: <localhost>
       port: 27017
       authentication-database: admin
-      #username: < username >
-      #passsword: < password >
+      username: <username>
+      password: <password>
       database: bullseye
