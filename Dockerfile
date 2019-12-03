@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:x86_64-ubuntu-jdk-11.0.3_7
+FROM adoptopenjdk/openjdk11:latest
 
 MAINTAINER Nathaniel Pautzke
 
