@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class Price {
-    private String value;
+    private double value;
 }

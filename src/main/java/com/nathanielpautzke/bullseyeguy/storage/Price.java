@@ -7,6 +7,5 @@ import lombok.Data;
 @Data
 @Builder
 public class Price {
-
-    private String value;
+    private double value;
 }

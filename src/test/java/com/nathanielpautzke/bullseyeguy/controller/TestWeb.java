@@ -1,7 +1,6 @@
 package com.nathanielpautzke.bullseyeguy.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nathanielpautzke.bullseyeguy.controller.Web;
 import com.nathanielpautzke.bullseyeguy.domain.Price;
 import com.nathanielpautzke.bullseyeguy.domain.Product;
 import org.junit.Test;
@@ -43,7 +42,7 @@ public class TestWeb {
 
     @Test
     public void putEndpointTest() throws Exception {
-        Price price = Price.builder().value("$10.00").build();
+        Price price = Price.builder().value(10.00).build();
         ResponseEntity response = ResponseEntity.ok().build();
 
         ObjectMapper objectMapper = new ObjectMapper();

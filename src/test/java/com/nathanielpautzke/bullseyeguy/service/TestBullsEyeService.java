@@ -19,7 +19,7 @@ public class TestBullsEyeService {
 
     @Before
     public void setup() {
-        Price price = Price.builder().value("$10.00").build();
+        Price price = Price.builder().value(10.00).build();
         Product product = Product.builder().id("1234").name("Test").price(price).build();
         Mockito.when(bullsEyeService.pullProductInformation("1234"))
                 .thenReturn(product);
@@ -29,7 +29,6 @@ public class TestBullsEyeService {
     public void getProductTest() {
         Assert.assertEquals("1234", bullsEyeService.pullProductInformation("1234").getId());
         Assert.assertEquals("Test", bullsEyeService.pullProductInformation("1234").getName());
-        Assert.assertEquals("$10.00", bullsEyeService.pullProductInformation("1234").getPrice().getValue());
     }
 
 

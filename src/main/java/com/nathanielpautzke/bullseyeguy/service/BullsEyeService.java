@@ -44,7 +44,7 @@ public class BullsEyeService {
         }else {
             Map<String, String> attributes = getProductAttributes(id);
 
-            Price price = Price.builder().value(attributes.get(PRICE)).build();
+            Price price = Price.builder().value(Double.parseDouble(attributes.get(PRICE))).build();
 
             com.nathanielpautzke.bullseyeguy.storage.Product docmentProduct =
                     com.nathanielpautzke.bullseyeguy.storage.Product.builder()
@@ -109,7 +109,7 @@ public class BullsEyeService {
 
         log.info("Parsing API response data...");
         productAttributes.put(NAME, jsonObject.getJSONObject("product").getJSONObject("item").getJSONObject("product_description").getString("title"));
-        productAttributes.put(PRICE, jsonObject.getJSONObject("product").getJSONObject(PRICE).getJSONObject("listPrice").getString("formattedPrice"));
+        productAttributes.put(PRICE, String.valueOf(jsonObject.getJSONObject("product").getJSONObject(PRICE).getJSONObject("listPrice").getDouble(PRICE)));
 
         return productAttributes;
     }
